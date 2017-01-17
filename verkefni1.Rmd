@@ -40,11 +40,19 @@ str(thv)
 ###a)
 Teiknið mynd sem sýnir fjölda eigna eftir hverfum og tegundum eigna (á sömu myndinni).
 ```{r}
- 
-eftirHverfum <- table(thv$matssvaedi,thv$teg_eign)
-barplot(eftirHverfum, beside=T, col=c(2,4,6), legend.text = T, main = "Fjöldi eigna eftir hverfum")
- 
+plott1 <- 
+  ggplot(aes(matssvaedi), data = thv) +
+  geom_bar(position = "dodge", aes(fill = thv$teg_eign)) +
+
+##X og Y labels
+  xlab("Matssvæði") + ylab("Fjöldi") +
+
+##Legend
+  scale_fill_discrete(name = "Tegund Eignar")
+
+plott1
 ```
+
 ###b)
 Teiknið mynd sem er lýsandi fyrir stærð einbýlishúsa eftir hverfum. Hér má nota filter() aðferðina til að búa til nýja gagnatöflu sem inniheldur aðeins einbýlishús. Það má gera með:
  
