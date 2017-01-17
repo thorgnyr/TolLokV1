@@ -21,7 +21,7 @@ thv <- read.table("./data/husnaedi.txt", header = TRUE, sep = ";")
 ###b)
 Veljið ykkur þrjú hverfi á Reykjavíkursvæðinu til að skoða. Gætið þess að velja hverfi með mörgum eignum. Það sem eftir er verkefnisins skulið þið aðeins vinna með eignir í þessum þremur hverfum. Það má velja hverfin út með nokkrum aðferðum en ágætt er að nota filter() aðferðina úr dplyr pakkanum. Þið þurfið að byrja á því að sækja pakkann og svo þarf að muna eftir að setja library(dplyr) ofarlega í skjalið ykkar (í R-klump) og keyra þá línu í hvert skiptið sem þið opnið RStudio á ný og ætlið að vinna í verkefninu ykkar. Velja mætti hverfi 1, 2, og 3 með eftirfarandi kóða (þetta eru ekki raunveruleg hverfi í gagnasafninu ykkar):
 ```{r}
-hverfi <- c(20,100,284)
+hverfi <- c(20, 100, 200)
 thv <- filter(thv, thv$matssvaedi%in%hverfi)
 ```
  
@@ -29,11 +29,12 @@ thv <- filter(thv, thv$matssvaedi%in%hverfi)
 Kannið gerð breyta gagnasafnsins með að nota str() aðferðina. Ef einhverjar breytur eru ranglega skilagreindar sem talnabreytur skulið þið breyta þeim í flokkabreytur og mögulega endurnefna flokkana. Sýnið aftur úttakið úr str() aðferðinni eftir að þið hafið breytt þeim breytum sem þið ætlið að breyta.
  
 ```{r}
+str(thv)
+##Eins og sjá má eru matssvæðin ranglega skilgreind sem tölugildi. Svo við breytum þeim í faktor og köllum matssvæðin nýjum nöfnum.
 thv$matssvaedi <- as.factor(thv$matssvaedi)
+levels(thv$matssvaedi) <- c("Midbaer", "LaugarnesVogar", "Arbaer")
 str(thv)
 ```
- 
- 
  
 #Hluti 2 - myndræn framsetning (30%)
 ###a)
