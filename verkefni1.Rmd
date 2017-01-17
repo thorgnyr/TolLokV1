@@ -7,29 +7,30 @@ output: html_document
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+library(dplyr)
+library(ggplot2)
 ```
 
 #Hluti 1 - innlestur gagna og smá gagnamöndl (30%)
 ###a)
 Lesið gagnaskrána inn með read.table() skipuninni og geymið í hlut sem ber upphafsstafi þeirra sem verkefnið vinna (ef Gréta Halldórsdóttir og Sigurður Jónsson eru að vinna saman skulu þau nefna hlutinn gs en ef Atli Pétursson er að vinna einn skal hann nefna hlutinn sinn ap).
 ```{r}
-vjh <- read.table("husnaedi.txt", header = TRUE, sep = ";")
+thv <- read.table("./data/husnaedi.txt", header = TRUE, sep = ";")
 ```
  
 ###b)
 Veljið ykkur þrjú hverfi á Reykjavíkursvæðinu til að skoða. Gætið þess að velja hverfi með mörgum eignum. Það sem eftir er verkefnisins skulið þið aðeins vinna með eignir í þessum þremur hverfum. Það má velja hverfin út með nokkrum aðferðum en ágætt er að nota filter() aðferðina úr dplyr pakkanum. Þið þurfið að byrja á því að sækja pakkann og svo þarf að muna eftir að setja library(dplyr) ofarlega í skjalið ykkar (í R-klump) og keyra þá línu í hvert skiptið sem þið opnið RStudio á ný og ætlið að vinna í verkefninu ykkar. Velja mætti hverfi 1, 2, og 3 með eftirfarandi kóða (þetta eru ekki raunveruleg hverfi í gagnasafninu ykkar):
 ```{r}
-library(dplyr)
 hverfi <- c(20,100,284)
-vjh <- filter(vjh, vjh$matssvaedi%in%hverfi)
+thv <- filter(thv, thv$matssvaedi%in%hverfi)
 ```
  
 ###c)
 Kannið gerð breyta gagnasafnsins með að nota str() aðferðina. Ef einhverjar breytur eru ranglega skilagreindar sem talnabreytur skulið þið breyta þeim í flokkabreytur og mögulega endurnefna flokkana. Sýnið aftur úttakið úr str() aðferðinni eftir að þið hafið breytt þeim breytum sem þið ætlið að breyta.
  
 ```{r}
-vjh$matssvaedi <- as.factor(vjh$matssvaedi)
-str(vjh)
+thv$matssvaedi <- as.factor(thv$matssvaedi)
+str(thv)
 ```
  
  
@@ -39,7 +40,7 @@ str(vjh)
 Teiknið mynd sem sýnir fjölda eigna eftir hverfum og tegundum eigna (á sömu myndinni).
 ```{r}
  
-eftirHverfum <- table(vjh$matssvaedi,vjh$teg_eign)
+eftirHverfum <- table(thv$matssvaedi,thv$teg_eign)
 barplot(eftirHverfum, beside=T, col=c(2,4,6), legend.text = T, main = "Fjöldi eigna eftir hverfum")
  
 ```
@@ -49,7 +50,7 @@ Teiknið mynd sem er lýsandi fyrir stærð einbýlishúsa eftir hverfum. Hér m
 > einbyli<-filter(ahj, teg_eign == "Einbýlishús")
  
 ```{r}
-einbyli<-filter(vjh, teg_eign == "Einbýlishús")
+einbyli<-filter(thv, teg_eign == "Einbýlishús")
 einbyliEftirStaerd <- table(einbyli$matssvaedi,einbyli$ibm2)
 barplot(einbyliEftirStaerd, beside=T, col=c(2,4,6), legend.text = T, main = "Stærð eigna(m2) eftir hverfum")
 ```
@@ -57,7 +58,7 @@ barplot(einbyliEftirStaerd, beside=T, col=c(2,4,6), legend.text = T, main = "St�
 ###c)
 Búið til nýtt gagnasafn sem inniheldur aðeins íbúðareignir. Teiknið mynd sem lýsir sambandi stærðar og verðs íbúðareigna.
 ```{r}
-ibudir <- filter(vjh, teg_eign == "Íbúðareign")
+ibudir <- filter(thv, teg_eign == "Íbúðareign")
 ibudirEftirVerdi <- table(ibudir$nuvirdi,ibudir$ibm2)
 barplot(ibudirEftirVerdi, beside=T, legend.text = T, main = "Íbúðarstærð eftir verði")
 ```
