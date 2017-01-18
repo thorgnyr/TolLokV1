@@ -71,7 +71,13 @@ Búið til nýtt gagnasafn sem inniheldur aðeins íbúðareignir. Teiknið mynd
 ```{r}
 ibudir <- filter(thv, teg_eign == "Íbúðareign")
 ibudirEftirVerdi <- table(ibudir$nuvirdi,ibudir$ibm2)
-
+ggplot(aes(nuvirdi,ibm2), 
+        data = ibudir)+
+  ## How to plot
+        geom_point(alpha=0.1)+
+        geom_smooth()+ 
+  ## X and Y labels
+        xlab("Núvirði í þúsund krónum") + ylab("Stærð í fermetrum")
 ```
  
  
