@@ -70,8 +70,13 @@ plott2
 Búið til nýtt gagnasafn sem inniheldur aðeins íbúðareignir. Teiknið mynd sem lýsir sambandi stærðar og verðs íbúðareigna.
 ```{r}
 ibudir <- filter(thv, teg_eign == "Íbúðareign")
-ibudirEftirVerdi <- table(ibudir$nuvirdi,ibudir$ibm2)
-barplot(ibudirEftirVerdi, beside=T, legend.text = T, main = "Íbúðarstærð eftir verði")
+ggplot(aes(nuvirdi,ibm2), 
+        data = ibudir)+
+  ## How to plot
+        geom_point(alpha=0.1)+
+        geom_smooth()+ 
+  ## X and Y labels
+        xlab("Núvirði í þúsund krónum") + ylab("Stærð í fermetrum")
 ```
  
 #Hluti 3 - lýsistærðir (30%)
@@ -84,7 +89,7 @@ Reiknið viðeigandi lýsistærðir, fyrir miðju og breytileika, fyrir stærð 
  
 ###c)
 Búið til nýtt gagnasagn sem inniheldur íbúðareignir sem eru á bilinu frá og með 50m250m2 til og með 60m260m2 á stærð. Það má enn og aftur gera með filter() aðferðinni:
- 
+
 > litlar<-filter(ibudir, ibm2>=50 & ibm2 <=60)
  
 Sýnið meðalverð, miðgildi verðs og staðalfrávik þessa íbúðareigna eftir hverfunum þremur. Sýnið einnig fjölda eigna í hverju hverfi.
