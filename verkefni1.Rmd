@@ -11,6 +11,8 @@ library(dplyr)
 library(ggplot2)
 ```
 
+Snagi.
+
 #Hluti 1 - innlestur gagna og smá gagnamöndl (30%)
 ###a)
 Lesið gagnaskrána inn með read.table() skipuninni og geymið í hlut sem ber upphafsstafi þeirra sem verkefnið vinna (ef Gréta Halldórsdóttir og Sigurður Jónsson eru að vinna saman skulu þau nefna hlutinn gs en ef Atli Pétursson er að vinna einn skal hann nefna hlutinn sinn ap).
