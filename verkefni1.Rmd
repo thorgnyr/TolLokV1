@@ -76,7 +76,6 @@ barplot(einbyliEftirStaerd, beside=T, col=c(2,4,6), legend.text = T, main = "St�
 Búið til nýtt gagnasafn sem inniheldur aðeins íbúðareignir. Teiknið mynd sem lýsir sambandi stærðar og verðs íbúðareigna.
 ```{r}
 ibudir <- filter(thv, teg_eign == "Íbúðareign")
-ibudirEftirVerdi <- table(ibudir$nuvirdi,ibudir$ibm2)
 ggplot(aes(nuvirdi,ibm2), 
         data = ibudir)+
   ## How to plot
