@@ -65,12 +65,6 @@ plott2 <-
 
 plott2
 ```
-
-```{r}
-#einebyli<-filter(thv, teg_eign == "Einbýlishús")
-einbigyliEftirStaerd <- table(einbyli$matssvaedi,einbyli$ibm2)
-barplot(einbyliEftirStaerd, beside=T, col=c(2,4,6), legend.text = T, main = "Stærð eigna(m2) eftir hverfum")
-```
  
 ###c)
 Búið til nýtt gagnasafn sem inniheldur aðeins íbúðareignir. Teiknið mynd sem lýsir sambandi stærðar og verðs íbúðareigna.
