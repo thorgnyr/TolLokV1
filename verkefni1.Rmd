@@ -77,9 +77,13 @@ plott3 <-
         geom_point(alpha = 0.1) +
         geom_smooth() + 
   ## X and Y labels
+<<<<<<< HEAD
         xlab("Núvirði í þúsund krónum") + ylab("Stærð í fermetrum")
 
 plott3
+=======
+        xlab("Núvirði íbúðar í þúsund krónum") + ylab("Stærð í fermetrum")
+>>>>>>> d9093820b33496bec517087246c782738f4d41ce
 ```
  
 #Hluti 3 - lýsistærðir (30%)
@@ -124,3 +128,15 @@ Búið til nýtt gagnasagn sem inniheldur íbúðareignir sem eru á bilinu frá
 > litlar<-filter(ibudir, ibm2>=50 & ibm2 <=60)
  
 Sýnið meðalverð, miðgildi verðs og staðalfrávik þessa íbúðareigna eftir hverfunum þremur. Sýnið einnig fjölda eigna í hverju hverfi.
+
+```{r}
+litlar <- filter(ibudir, ibm2>=50 & ibm2 <=60)
+ggplot(data = litlar, aes(matssvaedi, nuvirdi))+
+  ## How to plot
+        geom_boxplot(alpha=0.1)+
+        geom_jitter(alpha = 0.3, color = "red")+
+  ## X and Y labels
+        xlab("Matssvæði") + ylab("Virði lítilla íbúða í þús. krónum")+
+  scale_y_continuous(breaks = c(0,10000,20000,30000,40000,50000,60000))
+```
+
