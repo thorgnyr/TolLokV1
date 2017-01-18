@@ -77,13 +77,10 @@ plott3 <-
         geom_point(alpha = 0.1) +
         geom_smooth() + 
   ## X and Y labels
-<<<<<<< HEAD
         xlab("Núvirði í þúsund krónum") + ylab("Stærð í fermetrum")
 
 plott3
-=======
         xlab("Núvirði íbúðar í þúsund krónum") + ylab("Stærð í fermetrum")
->>>>>>> d9093820b33496bec517087246c782738f4d41ce
 ```
  
 #Hluti 3 - lýsistærðir (30%)
@@ -99,7 +96,7 @@ prop.table(table(thv$teg_eign, thv$matssvaedi), 2)
  
 ###b)
 Reiknið viðeigandi lýsistærðir, fyrir miðju og breytileika, fyrir stærð einbýlishúsa eftir hverfum.
-<<<<<<< HEAD
+
 ```{r}
 einbyl.midbaer <- einbylishus %>%
   filter(matssvaedi == "Midbaer")
@@ -111,8 +108,6 @@ einbyl.Arbaer <- einbylishus %>%
   filter(matssvaedi == "Arbaer")
 ```
 
-
-
 Meðalstærð einbýlishúsa í Miðbæ er `r mean(einbyl.midbaer$ibm2)`
 Meðalstærð einbýlishúsa í Laugarnesi/Vogum er `r mean(einbyl.LaugarnesVogar$ibm2)`.
 Meðalstærð einbýlishúsa í Árbæ er `r mean(einbyl.Arbaer$ibm2)`.
@@ -122,7 +117,6 @@ Miðstærð einbýlishúsa í Árbæ er `r median(einbyl.Arbaer$ibm2)`.
 Breytileiki stærðar einbýlishúsa í Miðbæ er
 Breytileiki stærðar einbýlishúsa í Laugarnesi/Vogum er
 Breytileiki stærðar einbýlishúsa í Árbæ er
-=======
 
 ```{r}
 einbyli <- filter(thv, teg_eign == "Einbýlishús")
@@ -145,7 +139,6 @@ einbyli_3 <- filter(einbyli, matssvaedi=="Arbaer")
 mean(einbyli_3$ibm2)
 var(einbyli_3$ibm2)
 ```
->>>>>>> 71574c0fcc08625eb4caa3a9aaaf6d4c04b00a9a
  
 ###c)
 Búið til nýtt gagnasagn sem inniheldur íbúðareignir sem eru á bilinu frá og með 50m250m2 til og með 60m260m2 á stærð. Það má enn og aftur gera með filter() aðferðinni:
