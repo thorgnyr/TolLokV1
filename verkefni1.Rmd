@@ -76,7 +76,7 @@ ggplot(aes(nuvirdi,ibm2),
         geom_point(alpha=0.1)+
         geom_smooth()+ 
   ## X and Y labels
-        xlab("Núvirði í þúsund krónum") + ylab("Stærð í fermetrum")
+        xlab("Núvirði íbúðar í þúsund krónum") + ylab("Stærð í fermetrum")
 ```
  
  
@@ -94,3 +94,14 @@ Búið til nýtt gagnasagn sem inniheldur íbúðareignir sem eru á bilinu frá
 > litlar<-filter(ibudir, ibm2>=50 & ibm2 <=60)
  
 Sýnið meðalverð, miðgildi verðs og staðalfrávik þessa íbúðareigna eftir hverfunum þremur. Sýnið einnig fjölda eigna í hverju hverfi.
+
+```{r}
+litlar <- filter(ibudir, ibm2>=50 & ibm2 <=60)
+ggplot(data = litlar, aes(matssvaedi, nuvirdi))+
+  ## How to plot
+        geom_boxplot(alpha=0.1)+
+        geom_jitter(alpha = 0.3, color = "red")+ 
+  ## X and Y labels
+        xlab("Matssvæði") + ylab("Virði lítilla íbúða")
+```
+
