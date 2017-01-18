@@ -11,8 +11,6 @@ library(dplyr)
 library(ggplot2)
 ```
 
-Snagi.
-
 #Hluti 1 - innlestur gagna og smá gagnamöndl (30%)
 ###a)
 Lesið gagnaskrána inn með read.table() skipuninni og geymið í hlut sem ber upphafsstafi þeirra sem verkefnið vinna (ef Gréta Halldórsdóttir og Sigurður Jónsson eru að vinna saman skulu þau nefna hlutinn gs en ef Atli Pétursson er að vinna einn skal hann nefna hlutinn sinn ap).
@@ -59,10 +57,18 @@ plott1
 Teiknið mynd sem er lýsandi fyrir stærð einbýlishúsa eftir hverfum. Hér má nota filter() aðferðina til að búa til nýja gagnatöflu sem inniheldur aðeins einbýlishús. Það má gera með:
  
 > einbyli<-filter(ahj, teg_eign == "Einbýlishús")
- 
+
 ```{r}
-einbyli<-filter(thv, teg_eign == "Einbýlishús")
-einbyliEftirStaerd <- table(einbyli$matssvaedi,einbyli$ibm2)
+einbylishus <- dplyr::filter(thv, teg_eign == "Einbýlishús")
+plott2 <- 
+  ggplot(aes(matssvaedi, ibm2), data = einbylishus) + geom_boxplot() + geom_jitter(alpha = 0.1, color = "red")
+
+plott2
+```
+
+```{r}
+#einebyli<-filter(thv, teg_eign == "Einbýlishús")
+einbigyliEftirStaerd <- table(einbyli$matssvaedi,einbyli$ibm2)
 barplot(einbyliEftirStaerd, beside=T, col=c(2,4,6), legend.text = T, main = "Stærð eigna(m2) eftir hverfum")
 ```
  
