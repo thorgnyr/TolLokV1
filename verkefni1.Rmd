@@ -99,6 +99,7 @@ prop.table(table(thv$teg_eign, thv$matssvaedi), 2)
  
 ###b)
 Reiknið viðeigandi lýsistærðir, fyrir miðju og breytileika, fyrir stærð einbýlishúsa eftir hverfum.
+<<<<<<< HEAD
 ```{r}
 einbyl.midbaer <- einbylishus %>%
   filter(matssvaedi == "Midbaer")
@@ -121,6 +122,30 @@ Miðstærð einbýlishúsa í Árbæ er `r median(einbyl.Arbaer$ibm2)`.
 Breytileiki stærðar einbýlishúsa í Miðbæ er
 Breytileiki stærðar einbýlishúsa í Laugarnesi/Vogum er
 Breytileiki stærðar einbýlishúsa í Árbæ er
+=======
+
+```{r}
+einbyli <- filter(thv, teg_eign == "Einbýlishús")
+```
+###Miðbær
+```{r}
+einbyli_1 <- filter(einbyli, matssvaedi=="Midbaer")
+mean(einbyli_1$ibm2)
+var(einbyli_1$ibm2)
+```
+###Laugarnes / vogar
+```{r}
+einbyli_2 <- filter(einbyli, matssvaedi=="LaugarnesVogar")
+mean(einbyli_2$ibm2)
+var(einbyli_2$ibm2)
+```
+###Árbær
+```{r}
+einbyli_3 <- filter(einbyli, matssvaedi=="Arbaer")
+mean(einbyli_3$ibm2)
+var(einbyli_3$ibm2)
+```
+>>>>>>> 71574c0fcc08625eb4caa3a9aaaf6d4c04b00a9a
  
 ###c)
 Búið til nýtt gagnasagn sem inniheldur íbúðareignir sem eru á bilinu frá og með 50m250m2 til og með 60m260m2 á stærð. Það má enn og aftur gera með filter() aðferðinni:
@@ -137,6 +162,6 @@ ggplot(data = litlar, aes(matssvaedi, nuvirdi))+
         geom_jitter(alpha = 0.3, color = "red")+
   ## X and Y labels
         xlab("Matssvæði") + ylab("Virði lítilla íbúða í þús. krónum")+
-  scale_y_continuous(breaks = c(0,10000,20000,30000,40000,50000,60000))
+        scale_y_continuous(breaks = c(0,10000,20000,30000,40000,50000,60000))
 ```
 
