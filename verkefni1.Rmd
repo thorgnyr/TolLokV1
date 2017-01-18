@@ -69,23 +69,54 @@ plott2
 ###c)
 Búið til nýtt gagnasafn sem inniheldur aðeins íbúðareignir. Teiknið mynd sem lýsir sambandi stærðar og verðs íbúðareigna.
 ```{r}
-ibudir <- filter(thv, teg_eign == "Íbúðareign")
-ggplot(aes(nuvirdi,ibm2), 
-        data = ibudir)+
+ibudir <- dplyr::filter(thv, teg_eign == "Íbúðareign")
+plott3 <- 
+  ggplot(aes(nuvirdi, ibm2), 
+        data = ibudir) +
   ## How to plot
-        geom_point(alpha=0.1)+
-        geom_smooth()+ 
+        geom_point(alpha = 0.1) +
+        geom_smooth() + 
   ## X and Y labels
         xlab("Núvirði í þúsund krónum") + ylab("Stærð í fermetrum")
+
+plott3
 ```
  
 #Hluti 3 - lýsistærðir (30%)
 ###a)
  
 Búið til töflu þar sem má sjá fjölda einbýlishúsa og íbúðareigna í hverfunum þremur (það á að vera hægt að lesa hversu margar íbúðir eru í fyrsta hverfinu sem þið völduð osfrv.). Búið til aðra töflu sem sýnir hversu hátt hlutfall af heildarfjölda eigna í hverju hverfi fyrir sig eru íbúðareignir.
+
+```{r}
+table(thv$teg_eign, thv$matssvaedi)
+prop.table(table(thv$teg_eign, thv$matssvaedi), 2)
+```
+
  
 ###b)
 Reiknið viðeigandi lýsistærðir, fyrir miðju og breytileika, fyrir stærð einbýlishúsa eftir hverfum.
+```{r}
+einbyl.midbaer <- einbylishus %>%
+  filter(matssvaedi == "Midbaer")
+
+einbyl.LaugarnesVogar <- einbylishus %>%
+  filter(matssvaedi == "LaugarnesVogar")
+
+einbyl.Arbaer <- einbylishus %>%
+  filter(matssvaedi == "Arbaer")
+```
+
+
+
+Meðalstærð einbýlishúsa í Miðbæ er `r mean(einbyl.midbaer$ibm2)`
+Meðalstærð einbýlishúsa í Laugarnesi/Vogum er `r mean(einbyl.LaugarnesVogar$ibm2)`.
+Meðalstærð einbýlishúsa í Árbæ er `r mean(einbyl.Arbaer$ibm2)`.
+Miðstærð einbýlishúsa í Miðbæ er `r median(einbyl.midbaer$ibm2)`.
+Miðstærð einbýlishúsa í Laugarnesi/Vogum er `r median(einbyl.LaugarnesVogar$ibm2)`.
+Miðstærð einbýlishúsa í Árbæ er `r median(einbyl.Arbaer$ibm2)`.
+Breytileiki stærðar einbýlishúsa í Miðbæ er
+Breytileiki stærðar einbýlishúsa í Laugarnesi/Vogum er
+Breytileiki stærðar einbýlishúsa í Árbæ er
  
 ###c)
 Búið til nýtt gagnasagn sem inniheldur íbúðareignir sem eru á bilinu frá og með 50m250m2 til og með 60m260m2 á stærð. Það má enn og aftur gera með filter() aðferðinni:
