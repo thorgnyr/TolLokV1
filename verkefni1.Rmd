@@ -100,8 +100,9 @@ litlar <- filter(ibudir, ibm2>=50 & ibm2 <=60)
 ggplot(data = litlar, aes(matssvaedi, nuvirdi))+
   ## How to plot
         geom_boxplot(alpha=0.1)+
-        geom_jitter(alpha = 0.3, color = "red")+ 
+        geom_jitter(alpha = 0.3, color = "red")+
   ## X and Y labels
-        xlab("Matssvæði") + ylab("Virði lítilla íbúða")
+        xlab("Matssvæði") + ylab("Virði lítilla íbúða í þús. krónum")+
+  scale_y_continuous(breaks = c(0,10000,20000,30000,40000,50000,60000))
 ```
 
