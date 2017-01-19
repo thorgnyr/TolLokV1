@@ -1,6 +1,6 @@
 ---
 title: "verkefni1"
-author: "Viktor Hamrar & Þórgnýr Thoroddsen"
+author: "Viktor Jón Helgason & Þórgnýr Thoroddsen"
 date: "1/17/2017"
 output: html_document
 ---
