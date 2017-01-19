@@ -121,18 +121,39 @@ Breytileiki stærðar einbýlishúsa í Árbæ er `r var(einbyl.Arbaer$ibm2)`.
 ###c)
 Búið til nýtt gagnasagn sem inniheldur íbúðareignir sem eru á bilinu frá og með 50m250m2 til og með 60m260m2 á stærð. Það má enn og aftur gera með filter() aðferðinni:
 
-> litlar<-filter(ibudir, ibm2>=50 & ibm2 <=60)
+litlar<-filter(ibudir, ibm2>=50 & ibm2 <=60)
  
 Sýnið meðalverð, miðgildi verðs og staðalfrávik þessa íbúðareigna eftir hverfunum þremur. Sýnið einnig fjölda eigna í hverju hverfi.
 
 ```{r}
 litlar <- filter(ibudir, ibm2>=50 & ibm2 <=60)
-ggplot(data = litlar, aes(matssvaedi, nuvirdi))+
-  ## How to plot
-        geom_boxplot(alpha=0.1)+
-        geom_jitter(alpha = 0.3, color = "red")+
-  ## X and Y labels
-        xlab("Matssvæði") + ylab("Virði lítilla íbúða í þús. krónum")+
-        scale_y_continuous(breaks = c(0,10000,20000,30000,40000,50000,60000))
 ```
+
+###Meðalverð, miðgildi verðs, staðalfrávík og fjöldi íbúðaeigna: Miðbær
+```{r}
+litlar.midbaer <- filter(litlar, litlar$matssvaedi == "Midbaer")
+mean(litlar.midbaer$nuvirdi)
+median(litlar.midbaer$nuvirdi)
+sd(litlar.midbaer$nuvirdi)
+nrow(litlar.midbaer)
+```
+
+###Meðalverð, miðgildi verðs og staðalfrávík og fjöldi íbúðaeigna: Laugarnes/Vogar
+```{r}
+litlar.LaugarnesVogar <- filter(litlar, litlar$matssvaedi == "LaugarnesVogar")
+mean(litlar.LaugarnesVogar$nuvirdi)
+median(litlar.LaugarnesVogar$nuvirdi)
+sd(litlar.LaugarnesVogar$nuvirdi)
+nrow(litlar.LaugarnesVogar)
+```
+
+###Meðalverð, miðgildi verðs og staðalfrávík og fjöldi íbúðaeigna: Árbær
+```{r}
+litlar.Arbaer <- filter(litlar, litlar$matssvaedi == "Arbaer")
+mean(litlar.Arbaer$nuvirdi)
+median(litlar.Arbaer$nuvirdi)
+sd(litlar.Arbaer$nuvirdi)
+nrow(litlar.Arbaer)
+```
+
 
